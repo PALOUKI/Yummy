@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'components/theme_button.dart';
 import 'components/color_button.dart';
 import 'constants.dart';
+import 'components/category_card.dart';
+import 'models/food_category.dart';
+import 'components/post_card.dart';
+import 'models/post.dart';
+import 'components/restaurant_landscape_card.dart';
+import 'models/restaurant.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -44,15 +50,22 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     final pages = [
-      Container(
-        color: Colors.green,
-      ),
-      Container(
-        color: Colors.yellow,
-      ),
-      Container(
-        color: Colors.red,
-      )
+      Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 300),
+          child: CategoryCard(category: categories[10]),),),
+      Center(child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: PostCard(post: posts[7]),
+      ),),
+      // 1
+      Center(
+        //2
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          // 3
+          child: RestaurantLandscapeCard(
+            restaurant: restaurants[0],),),),
     ];
 
     return Scaffold(
